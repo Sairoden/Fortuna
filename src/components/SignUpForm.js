@@ -6,7 +6,7 @@ import {
 import FormInput from "./FormInput";
 import Button from "./Button";
 
-const SignUpForm = () => {
+const Authentication = () => {
   const defaultFormFields = {
     displayName: "",
     email: "",
@@ -87,10 +87,10 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
-        <Button type="submit">Hello</Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );
 };
 
-export default SignUpForm;
+export default Authentication;
