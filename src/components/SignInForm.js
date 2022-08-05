@@ -7,11 +7,12 @@ import {
   signInAuthUserWithEmailAndPassword,
 } from "../utils/firebase.utils";
 
+const defaultFormFields = {
+  email: "",
+  password: "",
+};
+
 const SignInForm = () => {
-  const defaultFormFields = {
-    email: "",
-    password: "",
-  };
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -20,16 +21,18 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
 
     try {
-      const res = await signInAuthUserWithEmailAndPassword(email, password);
-      console.log(res);
+      const { user } = await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+
       resetFormFields();
     } catch (err) {
       switch (err.code) {
